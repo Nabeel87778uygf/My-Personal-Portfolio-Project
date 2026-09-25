@@ -15,7 +15,6 @@ const codingSkills = [
 
 const professionalSkills = [
     { name: "Web Development", level: 90 },
-    { name: "Full-Stack Development", level: 85 },
     { name: "Database Management", level: 80 },
     { name: "Problem Solving & Algorithms", level: 75 },
     { name: "UI/UX & Web Animations", level: 80 },

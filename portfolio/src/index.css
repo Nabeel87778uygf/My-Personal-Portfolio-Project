@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+
+body {
+  background-color: #0a192f;
+  color: #ccd6f6;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a192f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00d4ff;
+  border-radius: 4px;
+}
+
+/* Progress Bar */
+.skill-bar {
+  height: 8px;
+  background: #112240;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.skill-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00d4ff, #00ffa3);
+  border-radius: 8px;
+}
+
+/* Carousel */
+.slick-slide>div {
+  margin: 0 12px;
+}
+
+.slick-list {
+  margin: 0 -12px;
+}
+
+.slick-dots li button:before {
+  color: #00d4ff !important;
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: #00d4ff !important;
+  font-size: 24px !important;
+}

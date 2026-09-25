@@ -29,15 +29,32 @@ const Projects = () => {
     const settings = {
         dots: true,
         infinite: true,
-        speed: 600,
+        speed: 500,
         slidesToShow: 3,
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 3500,
         arrows: false,
+        pauseOnHover: true,
+        swipeToSlide: true,
+        touchThreshold: 10,
         responsive: [
-            { breakpoint: 1024, settings: { slidesToShow: 2, slidesToScroll: 1 } },
-            { breakpoint: 640, settings: { slidesToShow: 1, slidesToScroll: 1 } },
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    dots: true,
+                },
+            },
+            {
+                breakpoint: 640,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    dots: true,
+                },
+            },
         ],
     };
 
@@ -48,44 +65,50 @@ const Projects = () => {
                     My <span className="text-accent">Projects</span>
                 </h2>
 
-                <div className="mt-12 sm:mt-16 pb-6">
+                <div className="mt-10 sm:mt-16 pb-8 px-2 sm:px-0">
                     <SliderComponent {...settings}>
                         {projects.map((p, i) => (
-                            <motion.div
-                                key={i}
-                                whileHover={{ y: -6 }}
-                                className="bg-darkCard border border-accent/30 rounded-xl overflow-hidden shadow-xl transition-all duration-300 my-2"
-                            >
-                                <div className="overflow-hidden h-44 sm:h-48">
-                                    <img
-                                        src={p.img}
-                                        alt={p.title}
-                                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                                    />
-                                </div>
-                                <div className="p-5 text-center flex flex-col justify-between min-h-[160px]">
-                                    <div>
-                                        <h3 className="text-base sm:text-lg font-bold text-white">{p.title}</h3>
-                                        <p className="text-grayText text-xs sm:text-sm mt-2 leading-relaxed">{p.desc}</p>
+                            <div key={i} className="py-2 px-1">
+                                <motion.div
+                                    whileHover={{ y: -6 }}
+                                    className="bg-darkCard border border-accent/30 rounded-2xl overflow-hidden shadow-xl flex flex-col h-full"
+                                >
+                                    <div className="overflow-hidden h-48 sm:h-52 w-full bg-darkBg/50 relative">
+                                        <img
+                                            src={p.img}
+                                            alt={p.title}
+                                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                                            onError={(e) => {
+                                                e.target.onerror = null;
+                                                e.target.src = "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&auto=format&fit=crop";
+                                            }}
+                                        />
                                     </div>
-                                    <Button
-                                        href={p.link}
-                                        variant="contained"
-                                        sx={{
-                                            mt: 3,
-                                            bgcolor: "#00d4ff",
-                                            color: "#0a192f",
-                                            fontWeight: "bold",
-                                            textTransform: "none",
-                                            borderRadius: "6px",
-                                            py: 0.8,
-                                            "&:hover": { bgcolor: "#00b8e6" },
-                                        }}
-                                    >
-                                        View Demo
-                                    </Button>
-                                </div>
-                            </motion.div>
+                                    <div className="p-5 text-center flex flex-col justify-between flex-grow">
+                                        <div>
+                                            <h3 className="text-lg font-bold text-white tracking-wide">{p.title}</h3>
+                                            <p className="text-grayText text-xs sm:text-sm mt-2 leading-relaxed">{p.desc}</p>
+                                        </div>
+                                        <Button
+                                            href={p.link}
+                                            variant="contained"
+                                            sx={{
+                                                mt: 3,
+                                                bgcolor: "#00d4ff",
+                                                color: "#0a192f",
+                                                fontWeight: "bold",
+                                                textTransform: "none",
+                                                borderRadius: "8px",
+                                                py: 1,
+                                                width: "100%",
+                                                "&:hover": { bgcolor: "#00b8e6" },
+                                            }}
+                                        >
+                                            View Project
+                                        </Button>
+                                    </div>
+                                </motion.div>
+                            </div>
                         ))}
                     </SliderComponent>
                 </div>
